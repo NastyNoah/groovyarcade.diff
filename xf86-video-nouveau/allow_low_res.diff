@@ -1,0 +1,15 @@
+diff -Nru xf86-video-nouveau-1.0.1/src/drmmode_display.c src/xf86-video-nouveau-1.0.1/src/drmmode_display.c
+--- xf86-video-nouveau-1.0.1/src/drmmode_display.c	2012-06-18 07:46:04.000000000 +0200
++++ src/xf86-video-nouveau-1.0.1/src/drmmode_display.c	2012-06-26 16:44:49.892172286 +0200
+@@ -1188,8 +1188,9 @@
+ 	if (!drmmode->mode_res)
+ 		return FALSE;
+ 
+-	xf86CrtcSetSizeRange(pScrn, 320, 200, drmmode->mode_res->max_width,
+-			     drmmode->mode_res->max_height);
++	//xf86CrtcSetSizeRange(pScrn, 320, 200, drmmode->mode_res->max_width, drmmode->mode_res->max_height);
++	xf86CrtcSetSizeRange(pScrn, 160, 100, drmmode->mode_res->max_width, drmmode->mode_res->max_height);
++	xf86DrvMsg(pScrn->scrnIndex, X_INFO, "arcade-drm: range min set (160x100)\n");
+ 	for (i = 0; i < drmmode->mode_res->count_crtcs; i++) {
+ 		if (!xf86IsEntityShared(pScrn->entityList[0]) ||
+ 		     (pScrn->confScreen->device->screen == i))
